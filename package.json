@@ -1,0 +1,16 @@
+{
+  "name": "project_backend",
+  "version": "1.0.0",
+  "description": "a backend of project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "and",
+    "backend"
+  ],
+  "author": "Vansh Pratap Singh",
+  "license": "ISC"
+}
