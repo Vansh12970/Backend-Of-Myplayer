@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
+// its is asynchoronous and return a promise which we access in index.js(main)
 const connectDB = async () => {
     const dbUrl = `${process.env.MONGODB_URL}/${DB_NAME}`;
     console.log("Connecting to MongoDB at:", dbUrl); // Debugging output
