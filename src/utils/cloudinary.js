@@ -1,5 +1,5 @@
 import {v2 as cloudinary} from "cloudinary"
-//cloudinaru is name of v2 now as wish
+//cloudinary is name of v2 now as wish
 //fs filesystem use to read, write, remove, path by default in node.js
 import fs from "fs"
 
@@ -18,7 +18,7 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: "auto"
         })
         //file has been uploaded sucessfully
-        console.log("file is uploaded on cloudinary",
+        console.log("File is uploaded on cloudinary",
         response.url);
         return response;
 
