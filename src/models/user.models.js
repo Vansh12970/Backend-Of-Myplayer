@@ -36,7 +36,7 @@ const userSchema = new Schema(
         watchHistory: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "video",
+                ref: "Video",
             }
         ],
         password: {
@@ -53,7 +53,7 @@ const userSchema = new Schema(
 //data save honey se pheley password encrypt karna
 userSchema.pre("save", async function (next) {
     // if password doesn't change then out from here to next()
-    if(!this.isModefied("password")) return next();
+    if(!this.isModified("password")) return next();
 
     // if password change encrypt again
     this.password = bcrypt.hash(this.password, 10)
