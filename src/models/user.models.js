@@ -1,4 +1,4 @@
-import mongoose, {Schema} from mongoose;
+import mongoose, { Schema }  from "mongoose" ;
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
@@ -20,13 +20,13 @@ const userSchema = new Schema(
             lowercase: true,
             trim: true,
         },
-        fullname: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
             index: true
         },
-        avtar: {
+        avatar: {
             type: String, // cloudinary url
             required: true,
         },
@@ -44,7 +44,7 @@ const userSchema = new Schema(
             required :[ true, "Password is required"]
         },
         refreshToken: {
-            type: string
+            type: String
         },
     }, {
         timestamps: true
@@ -71,7 +71,7 @@ userSchema.methods.generateAcessToken = function (){
         _id:this._id,
         email: this.email,
         username: this.username,
-        fullname: this.fullname
+        fullName: this.fullName
     },
     process.env.ACCESS_TOKEN_SECRET,
     {

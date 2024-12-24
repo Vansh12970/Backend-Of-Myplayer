@@ -6,7 +6,7 @@ import {app} from './app.js'
 
 // Load environment variables
 dotenv.config({
-    path: './.env',
+    path: './env',
 });
 
 // Connect to the database define in db folder index.js

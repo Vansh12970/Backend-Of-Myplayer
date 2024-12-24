@@ -8,9 +8,9 @@ const router = Router()
 
 router.route("/register").post(
     //handle the images data
-    upload.fileds([
+    upload.fields([
         {
-            name: "avtar",
+            name: "avatar",
             maxCount: 1,
         },
         {
