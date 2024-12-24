@@ -1,10 +1,10 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 // import api error file 
 import { ApiError } from "../utils/ApiError.js";
-import { User } from "../models/user,models.js";
+import { User } from "../models/user.models.js";
 // import cloudinary file
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
-import { ApiResponse } from "../utils/ApiReponse.js"
+import { ApiResponse } from "../utils/ApiResponse.js"
 
 const registerUser = asyncHandler(async (req, res) => {
 
@@ -37,7 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All fields are required")
     }
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
     //with help of $ you can use logical operators
         $or: [{ username }, { email }]
     })
@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiEroor(400, "Avtar file is required")
     }
 
-    const avtar =  await uploadOnCloudinary(avatarLocalPath)
+    const avatar =  await uploadOnCloudinary(avatarLocalPath)
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
     //check if avtar upload on cloudinary
