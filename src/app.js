@@ -16,5 +16,12 @@ app.use(express.urlencoded({extended: true, limit: "20kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
+//ROUTES IMPORT
+
+import userRouter from "./routes/user.routes.js"
+
+//ROUTES DECLERATION
+app.use("/api/v1/users", userRouter)
+//this will create a url like https:8000/api/v1/users/registers
 
 export { app }
