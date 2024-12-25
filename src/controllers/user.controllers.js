@@ -6,6 +6,8 @@ import { User } from "../models/user.models.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js"
 
+
+
 const generateAccessAndRefreshTokens = async(userId) => {
     try {
         //generating tokens by methods define in user models
@@ -120,7 +122,7 @@ const loginUser = asyncHandler(async (req, res) => {
     // send cookie
     const {email, username, password} = req.body
 
-    if(!username || !email) {
+    if(!(username || email)) {
         throw new ApiError(400, "Username or email is required")
     }
 // findOne is mongodb method and use with only database (User)
