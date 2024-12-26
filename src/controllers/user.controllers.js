@@ -68,7 +68,9 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 // Multer give access of files
 //console.log(req.files)
+//this avatarLocalPath work as it is a required file
     const avatarLocalPath = req.files?.avatar[0]?.path;
+// this col doesn't work with coverImageLocalPath as it is not compulsary field
 //  const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
     let coverImageLocalPath;
