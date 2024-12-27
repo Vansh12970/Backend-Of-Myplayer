@@ -6,6 +6,7 @@ import { User } from "../models/user.models.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js"
 import jwt from "jsonwebtoken"
+import {v2 as cloudinary} from "cloudinary"
 
 
 const generateAccessAndRefreshTokens = async(userId) => {
@@ -263,7 +264,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 const getCurrentUser = asyncHandler(async (req, res) => {
     return res
     .status(200)
-    .json(200, req.user, "Current User Fetched Successfully")
+    .json(new ApiResponse(200, req.user, "Current User Fetched Successfully"))
 
 })
 
@@ -274,7 +275,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All fields required")
     }
 
-const user = User.findByIdAndUpdate(
+const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set:{
@@ -319,6 +320,22 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
     .json(new ApiResponse(200, user, "Avatar Uploaded Successfully"))
 })
 
+// To remove avatar from database and cloudinary together
+const removeOldAvatar = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user?._id)
+
+    if(!user.avatar) {
+        throw new ApiError(400, "No Avatar found")
+    }
+
+    user.avatar = ""
+    await user.save();
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200, "", "Old Avatar removed successfully"))
+})
+
 const updateUserCoverImage = asyncHandler(async(req, res) => {
     const coverImageLocalPath = req.file?.path
 
@@ -358,4 +375,5 @@ export {
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
+    removeOldAvatar,
  }
