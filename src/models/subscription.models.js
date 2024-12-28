@@ -10,5 +10,5 @@ const subscriptionSchema = new Schema({
         ref: "User"
     },
 },{timestamps : true})
-
+                                    // in databse Subscription stores as subscriptions (small letters and plural)
 export const Subscription = mongoose.model("Subscription", subscriptionSchema)
