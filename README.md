@@ -1,6 +1,6 @@
 # MyPlayer Backend
 
-MyPlayer is a backend system for a music streaming application, built using **Node.js**, **Express.js**, **MongoDB (Mongoose)**, **JWT authentication**, and **Cloudinary** for media handling. It follows the **MVC (Model-View-Controller)** architecture to ensure scalability and maintainability.
+MyPlayer is a backend system for a video streaming application, built using **Node.js**, **Express.js**, **MongoDB (Mongoose)**, **JWT authentication**, and **Cloudinary** for media handling. It follows the **MVC (Model-View-Controller)** architecture to ensure scalability and maintainability.
 
 ## Features
 - User authentication (Sign Up, Login, JWT-based authentication)
